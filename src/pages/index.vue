@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { princess } from '~/apis/index'
+import { princess } from '~/api/index'
 export default Vue.extend({
   name: 'Index',
   data() {
