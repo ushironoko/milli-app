@@ -1,3 +1,4 @@
+import { plugin } from 'vue-function-api'
 import NuxtConfiguration from '@nuxt/config'
 const config: NuxtConfiguration = {
   srcDir: 'src',
@@ -29,7 +30,7 @@ const config: NuxtConfiguration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/vue-function-api'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -44,7 +45,6 @@ const config: NuxtConfiguration = {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
   /*
