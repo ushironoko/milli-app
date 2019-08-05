@@ -10,6 +10,13 @@ const getCardData = async (id: number) => {
   return cards
 }
 
+const getCardList = async () => {
+  const response = await axios.get('/cards/')
+  const cards: Cards = response.data
+  return cards
+}
+
 export default {
-  getCardData
+  getCardData,
+  getCardList
 }

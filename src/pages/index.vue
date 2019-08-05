@@ -12,6 +12,14 @@
           カード取得
         </button>
       </div>
+      <div>
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          @click="getCardList()"
+        >
+          全カード取得
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +37,10 @@ export default Vue.extend({
   methods: {
     async getCardData(id) {
       const data = await princess.getCardData(id)
+      this.data = data
+    },
+    async getCardList() {
+      const data = await princess.getCardList()
       this.data = data
     }
   }
