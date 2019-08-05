@@ -1,4 +1,3 @@
-import { plugin } from 'vue-function-api'
 import NuxtConfiguration from '@nuxt/config'
 const config: NuxtConfiguration = {
   srcDir: 'src',
