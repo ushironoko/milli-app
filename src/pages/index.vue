@@ -2,7 +2,9 @@
   <div class="flex justify-center">
     <div class="container">
       <div>
-        {{ data }}
+        <base-card h1="カード">
+          <div>{{ data }}</div>
+        </base-card>
       </div>
       <div>
         <button
@@ -26,21 +28,25 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { princess } from '~/api/index'
+import princess from 'princess'
+import { princess as princessApi } from '~/api/index'
+import BaseCard from '~/components/bases/BaseCard.vue'
 export default Vue.extend({
-  name: 'Index',
+  components: {
+    BaseCard
+  },
   data() {
     return {
-      data: {}
+      data: null as princess.Cards | null
     }
   },
   methods: {
     async getCardData(id) {
-      const data = await princess.getCardData(id)
+      const data = await princessApi.getCardData(id)
       this.data = data
     },
     async getCardList() {
-      const data = await princess.getCardList()
+      const data = await princessApi.getCardList()
       this.data = data
     }
   }
