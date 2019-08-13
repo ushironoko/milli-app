@@ -41,7 +41,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    async getCardData(id) {
+    async getCardData(id: number) {
       const data = await princessApi.getCardData(id)
       this.data = data
     },
