@@ -28,16 +28,17 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import princess from 'princess'
 import { princess as princessApi } from '~/api/index'
 import BaseCard from '~/components/bases/BaseCard.vue'
 export default Vue.extend({
   components: {
     BaseCard
   },
-  data() {
+  data(): {
+    data: princess.Cards
+  } {
     return {
-      data: null as princess.Cards | null
+      data: []
     }
   },
   methods: {
