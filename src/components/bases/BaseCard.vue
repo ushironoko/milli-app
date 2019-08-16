@@ -42,7 +42,7 @@ export default Vue.extend({
           : null
       return url
     },
-    rarity(): string {
+    rarity() {
       switch (this.cardData.rarity) {
         case 1:
           return 'N'
@@ -54,14 +54,16 @@ export default Vue.extend({
           return 'SSR'
       }
     },
-    idolType(): string | null {
+    idolType() {
       switch (this.cardData.idolType) {
         case 1:
           return 'Princess'
         case 2:
           return 'Faily'
-        default:
+        case 3:
           return 'Angle'
+        default:
+          return 'Ex'
       }
     },
     cardText(): string {
