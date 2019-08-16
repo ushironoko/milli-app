@@ -13,11 +13,9 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "princess": ["types/princess"],
       "~/*": ["./src/*"],
       "@/*": ["./src/*"]
     },
-    "typeRoots": ["types", "node_modules/@types"],
     "types": ["@types/node", "@nuxt/vue-app"]
   }
 }
