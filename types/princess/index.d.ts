@@ -78,6 +78,7 @@ declare namespace princess {
   export type Card = {
     id: number
     name: string
+    awakeningText: string
     sortedId: number
     idolId: number
     idolType: 1 | 2 | 3 | 4

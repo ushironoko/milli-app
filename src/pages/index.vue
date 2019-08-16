@@ -1,54 +1,39 @@
 <template>
-  <div class="flex justify-center">
-    <div class="container">
-      <div>
-        <base-card h1="カード">
-          <div>{{ data }}</div>
-        </base-card>
-      </div>
-      <div>
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-          @click="getCardData(250)"
-        >
-          カード取得
-        </button>
-      </div>
-      <div>
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-          @click="getCardList()"
-        >
-          全カード取得
-        </button>
-      </div>
+  <div>
+    <div v-for="card in cards" :key="card.name" class="my-4">
+      <base-card v-if="hasExtraType(card)" :card-data="card"></base-card>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { princess as princessApi } from '~/api/index'
+import { getCardList, CardListConfig } from '~/api/princess'
 import BaseCard from '~/components/bases/BaseCard.vue'
 export default Vue.extend({
   components: {
     BaseCard
   },
   data(): {
-    data: princess.Cards
+    cards: princess.Cards
   } {
     return {
-      data: []
+      cards: []
+    }
+  },
+  async asyncData() {
+    const config: CardListConfig = {
+      rarity: 4,
+      extraType: 0
+    }
+    const cards = await getCardList(config)
+    return {
+      cards
     }
   },
   methods: {
-    async getCardData(id: number) {
-      const data = await princessApi.getCardData(id)
-      this.data = data
-    },
-    async getCardList() {
-      const data = await princessApi.getCardList()
-      this.data = data
+    hasExtraType(card: princess.Card) {
+      return card.extraType === 0 || 4
     }
   }
 })
